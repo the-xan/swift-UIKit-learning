@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true'>
+    <pages>
+        <page name='lesson 7 - Arrays'/>
+        <page name='Untitled Page'/>
+        <page name='lesson 8 - Dictionary'/>
+        <page name='lesson 9 - switch'/>
+        <page name='lesson 10 - Functionals'/>
+        <page name='lesson 11 - Closure'/>
+        <page name='lesson 12 -Enumerations'/>
+        <page name='lesson 13 - Classes and Structures'/>
+    </pages>
+</playground>
