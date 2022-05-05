@@ -26,7 +26,7 @@ let minInt64 = Int64.min
 print("Maximum value of Int64 is: \(maxInt64)")
 print("Minimum value of Int64 is: \(minInt64)")
 
-// task 2: Create 3 conts with Int, Float, Double types, then create another 3 consts with the same types: Int, Float, Double. Each of them is the sum of the first three, but with its own type
+// task 2: Create 3 consts with Int, Float, Double types, then create another 3 consts with the same types: Int, Float, Double. Each of them is the sum of the first three, but with its own type
 let firstIntConst = 24
 let secondFloatConst : Float = 3.141
 let thirdDoubleConst = 33.01
@@ -188,7 +188,7 @@ firstStudent.score = 10
 
 print(firstStudent)
 
-
+//
 // lesson 7: Arrays
 
 let constArray = ["a", "b", "c", "d"]
