@@ -100,4 +100,82 @@ stStruct1
 
 
 
-//home work
+//home work ->
+// task 1 : Создать структуру "студент" с параметрами - имя, фамилия, год рождения, средний бал оценок. Сделать несколько экземпляров и заполнить их данными
+// положить в массив "журнал студентов"
+
+struct StudentDataStruct {
+    var name : String
+    var middleName : String
+    var birthYear : Int
+    var averageGrade : Double
+}
+
+
+let firstStudentStruct = StudentDataStruct(name: "Alex", middleName: "Skutarenko", birthYear: 1985, averageGrade: 4.12)
+let secondStudentStruct = StudentDataStruct(name: "Sam", middleName: "Samuel", birthYear: 1992, averageGrade: 4.78)
+let thirdStudentStruct = StudentDataStruct(name: "Simon", middleName: "Belaris", birthYear: 1999, averageGrade: 3.89)
+let fouthStudentStruct = StudentDataStruct(name: "Nana", middleName: "Belaris", birthYear: 1999, averageGrade: 4.57)
+let fifthStudentStruct = StudentDataStruct(name: "Coldlac", middleName: "Wirewolf", birthYear: 1994, averageGrade: 3.56)
+
+
+//task 2: написать функцию которая будет принимать массив "журнал  студентов" и выводить в консоль данные студента - имя фамилия и.т.д Перед каждым стурдентом надо поставить номер - 'по списку из журнала' -> порядковый номер в этом журнале
+
+var studentsJournalStruct = [firstStudentStruct, secondStudentStruct, thirdStudentStruct, fouthStudentStruct, fifthStudentStruct]
+
+func printStudentsData(_ array: [StudentDataStruct]) {
+    
+    var number = 0
+    for i in array {
+        number += 1
+        print("\(number): Name - \(i.name), middleName - \(i.middleName), birth year - \(i.birthYear), average grade - \(i.averageGrade)")
+    }
+}
+
+printStudentsData(studentsJournalStruct)
+
+
+// task 3: отсортируйте массив по среднему баллу студентов по убыванию
+let maxToMinAverageGrade = studentsJournalStruct.sorted() {$0.averageGrade > $1.averageGrade}
+print("Sorted by max To Min Average Grade - \(maxToMinAverageGrade)")
+
+
+// task 4: Создать функцию с сортировкой по фамилии (по алфавиту)
+
+let sortedByMiddleName = studentsJournalStruct.sorted() {
+    ($0.middleName != $1.middleName) ? $0.middleName < $1.middleName : $0.name < $1.name
+}
+
+print("sorted By Middle Name - \(sortedByMiddleName)")
+
+//tasl 5: Создать переменную и прировнять ее к массиву, в существующем массиве поменять данные студента, посмотреть что стало с новым массивом? поменялся ли он
+var anotherStudentJournal = studentsJournalStruct
+
+anotherStudentJournal[0].averageGrade = 4.01
+anotherStudentJournal[1].averageGrade = 3.86
+
+print("New journal - \(anotherStudentJournal)")
+print("Old journal - \(studentsJournalStruct)")
+
+//task 6: Проделать тоже самое но с классами
+class StudentsDataClass {
+    var name : String
+    var middleName : String
+    var birthYear : Int
+    var averageGrade : Double
+    
+    init(name: String, middleName: String, birthYear: Int, averageGrade: Double ) {
+        // self - указывает на текущий экземпляр
+        self.name = name
+        self.middleName = middleName
+        self.birthYear = birthYear
+        self.averageGrade = averageGrade
+    }
+}
+
+
+let firstStudentClass = StudentsDataClass(name: "Shon", middleName: "Loly", birthYear: 1978, averageGrade: 3.22)
+let secondStudentClass = StudentsDataClass(name: "Jane", middleName: "Donut", birthYear: 1985, averageGrade: 3.58)
+let thirdStudentClass = StudentsDataClass(name: "Olly", middleName: "Templeton", birthYear: 1997, averageGrade: 4.32)
+
+
