@@ -105,7 +105,7 @@ Color.numberOfElements()
 
 struct Player {
     
-    var positionX = 1 {
+    var positionX : Int {
         didSet {
             if positionX > Room.height || positionX <= 0 {
                 positionX = oldValue
@@ -113,55 +113,73 @@ struct Player {
         }
     }
     
-    var positionY = 1 {
+    var positionY : Int {
         didSet {
             if positionY > Room.width || positionY <= 0 {
                 positionY = oldValue
             }
         }
     }
-
+    
     mutating func moveTo(direction: Direction) -> Player {
         switch direction {
         case .Right:
             self.positionY += 1
-            printPlayerPosition()
             break
         case .Left:
             self.positionY -= 1
-            printPlayerPosition()
             break
         case .Down:
             self.positionX += 1
-            printPlayerPosition()
             break
         case .Up:
             self.positionX -= 1
-            printPlayerPosition()
             break
         }
         return self
     }
+}
+
+struct Box {
     
-    func printPlayerPosition() {
-        for x in 1...Room.width {
-            var row = ""
-            for y in 1...Room.width {
-                switch (x, y) {
-                case (self.positionX, self.positionY):
-                    row += Objects.Player.rawValue
-                    break
-                default:
-                    row += Objects.EmptyField.rawValue
-                }
+    var positionX : Int {
+        didSet {
+            if positionX > Room.height || positionX <= 0 {
+                positionX = oldValue
             }
-            print(row)
         }
+    }
+    
+    var positionY : Int {
+        didSet {
+            if positionY > Room.width || positionY <= 0 {
+                positionY = oldValue
+            }
+        }
+    }
+    
+    mutating func moveTo(direction: Direction) -> Box {
+        switch direction {
+        case .Right:
+            self.positionY += 1
+            break
+        case .Left:
+            self.positionY -= 1
+            break
+        case .Down:
+            self.positionX += 1
+            break
+        case .Up:
+            self.positionX -= 1
+            break
+        }
+        return self
     }
 }
 
 enum Objects : String {
     case Player = "👨‍🎓"
+    case Box = "📕"
     case EmptyField = "⬜"
 }
 
@@ -172,19 +190,48 @@ enum Direction {
     case Right
 }
 
-class Room {
+struct Room {
     static let width = 8
     static let height = 8
+    
+    var player : Player
+    var box : Box
+    
+    func printRoom() {
+        for byX in 1...Room.width {
+            var row = ""
+            for byY in 1...Room.width {
+                switch (byX, byY) {
+                case (player.positionX, player.positionY):
+                    row += Objects.Player.rawValue
+                    break
+                case (box.positionX, box.positionY):
+                    row += Objects.Box.rawValue
+                    break
+                default:
+                    row += Objects.EmptyField.rawValue
+                }
+            }
+            print(row)
+        }
+        print(" ")
+    }
+    
+    init(player: Player, box: Box) {
+        self.box = box
+        self.player = player
+    }
 }
 
 
-var newPlayer = Player()
+var newPlayer = Player(positionX: 1, positionY: 1)
+var box = Box(positionX: 5, positionY: 7)
+var room = Room(player: newPlayer, box: box)
+
 newPlayer.moveTo(direction: .Down)
-
-
-
-
-
+newPlayer.positionX
+newPlayer.positionY
+room.printRoom()
 
 
 
