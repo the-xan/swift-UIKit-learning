@@ -124,3 +124,54 @@ field["a", 5] = "X"
  
  */
 
+
+// Дз не сделано.
+
+enum GameObjects : String {
+    case X = "❌"
+    case O = "⭕️"
+    case Empty = "⬜️"
+}
+
+
+
+struct TicTacToeBoard {
+    var board = [String : String]()
+    
+    func keyForColumn(_ column: Int, andRow row: Int) -> String {
+        // если в if - else условии я хочу использовать диапозон чисел, то правильно записывать условие так:
+        if (1...3 ~= column && 1...3 ~= row) {
+            return String(column) + " " + String(row)
+        }
+        return GameObjects.Empty.rawValue
+    }
+    
+
+    
+    subscript(column: Int, row: Int) -> String? {
+        get {
+            return board[keyForColumn(column, andRow: row)]
+        }
+        set {
+            switch newValue {
+            case GameObjects.X.rawValue:
+                board[keyForColumn(column, andRow: row)] = newValue
+            case GameObjects.O.rawValue:
+                board[keyForColumn(column, andRow: row)] = newValue
+            default:
+                break
+            }
+        }
+    }
+}
+
+var newGame = TicTacToeBoard()
+
+newGame[1, 1] = "❌"
+newGame[1, 2] = "⭕️"
+newGame[1, 3] = ""
+
+newGame.board.keys
+
+
+
