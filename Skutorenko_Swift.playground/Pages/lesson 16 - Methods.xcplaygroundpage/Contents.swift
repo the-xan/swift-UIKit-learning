@@ -1,4 +1,4 @@
-// lesson 16 -> Methods
+// lesson 16 - Methods -> Методы
 // Методы могут пренадлежать  типам - класс, структура, перечисление
 struct Point {
     var x : Int
