@@ -75,6 +75,7 @@ class Kid : Human {
 let human = Human()
 human.firstName = "Alex"
 human.lastName = "Skutarenko"
+human.fullName
 human.sayHello()
 
 // класс Student не имея собственных проперти перенял все от базового класса Human
@@ -99,12 +100,13 @@ kid.sayHello()
 // пример -> ПОЛИМОРФИЗМА - когда объединяем 3 объекта разных типов в массив по общему признаку (в нашем случае это base class Human) и вызываем метод который есть у всех дочерних классов, но этот метод у каждого класса делает что-то "свое"
 // массив будет типа Human (явно тип указывать не надо в этом случае просто пример)
 // let array = [kid, student, human]
-let array : [Human] = [kid, student, human]
+let arr : [Human] = [kid, student, human]
 
 // можем пробежаться циклом по массиву
-for value in array {
+for value in arr {
     print(value.sayHello())
 }
+
 
 
 // Homework ->
@@ -118,3 +120,55 @@ for value in array {
 
   */
 
+class Artist {
+    
+    var firstName : String
+    var lastName : String
+    var performance : String
+    
+    var introdusing : String {
+        return "On stage will perform: " + firstName + " " + lastName + " with " + performance
+     }
+    
+    init(firstName: String, lastName: String, performance: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.performance = performance
+    }
+}
+
+
+
+class Actor : Artist {
+    static let mask = "Mask"
+}
+
+class Clown : Artist {
+    static let toys = "Bag with toys"
+}
+
+class Dancer : Artist {
+    static let boots = "Special boots for dancing"
+}
+
+class Painter : Artist {
+    
+    override var firstName: String {
+        get {
+            return String(super.firstName.reversed())
+        }
+        set {
+            super.firstName = newValue
+        }
+    }
+}
+
+let actor = Actor(firstName: "John", lastName: "Joe", performance: "Sciene N8")
+let clown = Clown(firstName: "Really", lastName: "Fun", performance: "Tips and Trics")
+let dancer = Dancer(firstName: "Helena", lastName: "Coelee", performance: "Pool dance")
+let painter = Painter(firstName: "Tomi", lastName: "DontSayMyName", performance: "Drowing portrets")
+
+let array  = [actor, clown, dancer, painter]
+for i in array {
+    print(i.introdusing)
+}
