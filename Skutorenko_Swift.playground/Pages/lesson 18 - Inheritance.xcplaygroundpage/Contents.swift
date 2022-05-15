@@ -112,46 +112,63 @@ for value in arr {
 // Homework ->
  /*
   1. Создайте базовый класс артист с "именем", "фамилией" и методом "выступление". У каждого дочернего класса свой метод "выступление" (актер - играет, клоун - развлекает, танцор - танцует), включающее в себя представление участника, в каком жанре выступление и действие (можно просто вывод строки). Создайте дочерний класс "художник", который не хочет, чтобы его называли вы и всегда ставит другое имя, когда вы пытаетесь его назвать. Положить все экземпляры в один массив и пройдясь по нему вызвать у всех выступление.
+*/
 
-  2. Базовый класс - "транспортное средство"; свойства - скорость, вместимость, стоимость одной перевозки (все computer properties). Несколько дочерних классов (самолет, корабль, вертолет, машина, поезд) с переопределенными свойствами (для каждого своя скорость вместимость и стоимость). Создать по одному объекту каждому дочернему классу. У всех есть метод, который что-то расчитывает (скорость, расстояние, количество пассажиров), конкретно сколько уйдет денег и времени, чтобы перевести определенное количество человек из пункта А в пункт В. При перевозке 100 и 1000 человек ответить на следующие вопросы:
-  -Как быстро мы сможем это сделать и каким транспортом?
-  -Стоимость всех перевозок и количество?
-  -Какой транспорт быстрее справится и какой более выгодный?
-
-  */
-
+//task 1:
 class Artist {
     
     var firstName : String
     var lastName : String
-    var performance : String
+    
+    var performance : String {
+        return " with performance - "
+    }
     
     var introdusing : String {
-        return "On stage will perform: " + firstName + " " + lastName + " with " + performance
+        return "On stage will perform: " + firstName + " " + lastName + performance
      }
     
-    init(firstName: String, lastName: String, performance: String) {
+    init(firstName: String, lastName: String) {
         self.firstName = firstName
         self.lastName = lastName
-        self.performance = performance
     }
 }
 
 
 
 class Actor : Artist {
+    
+    override var performance: String {
+        return  super.performance + "Sciene N8"
+    }
+    
     static let mask = "Mask"
 }
 
 class Clown : Artist {
+    
+    override var performance: String {
+        return  super.performance + "Tips and Trics"
+    }
+    
     static let toys = "Bag with toys"
 }
 
 class Dancer : Artist {
+    
+    override var performance: String {
+        return  super.performance + "Pool dance"
+    }
+    
     static let boots = "Special boots for dancing"
 }
 
 class Painter : Artist {
+    
+    override var performance: String {
+        return  super.performance + "Drowing portrets"
+    }
+    
     
     override var firstName: String {
         get {
@@ -163,12 +180,50 @@ class Painter : Artist {
     }
 }
 
-let actor = Actor(firstName: "John", lastName: "Joe", performance: "Sciene N8")
-let clown = Clown(firstName: "Really", lastName: "Fun", performance: "Tips and Trics")
-let dancer = Dancer(firstName: "Helena", lastName: "Coelee", performance: "Pool dance")
-let painter = Painter(firstName: "Tomi", lastName: "DontSayMyName", performance: "Drowing portrets")
+let actor = Actor(firstName: "Jill", lastName: "Jiji" )
+let clown = Clown(firstName: "AreYou", lastName: "Mad")
+let dancer = Dancer(firstName: "Wow", lastName: "Dance")
+let painter = Painter(firstName: "DontCall", lastName: "MyName")
+
 
 let array  = [actor, clown, dancer, painter]
 for i in array {
     print(i.introdusing)
+}
+
+// task 2:
+/*
+2. Базовый класс - "транспортное средство"; свойства - скорость, вместимость, стоимость одной перевозки (все computer properties).
+ Несколько дочерних классов (самолет, корабль, вертолет, машина, поезд) с переопределенными свойствами (для каждого своя скорость вместимость и стоимость).
+ Создать по одному объекту каждому дочернему классу. У всех есть метод, который что-то расчитывает (скорость, расстояние, количество пассажиров), конкретно сколько уйдет денег и времени, чтобы перевести определенное количество человек из пункта А в пункт В. При перевозке 100 и 1000 человек ответить на следующие вопросы:
+    -Как быстро мы сможем это сделать и каким транспортом?
+    -Стоимость всех перевозок и количество?
+    -Какой транспорт быстрее справится и какой более выгодный?
+*/
+
+class Transport {
+    var speed : Int {
+        return 0
+    }
+    var seats : Int {
+        return 0
+    }
+    
+    var tripCost : Int {
+        return 0
+    }
+}
+
+class Plane : Transport {
+    override var speed: Int {
+        return 917 //км/ч
+    }
+    
+    override var seats: Int {
+        return 660
+    }
+    
+    override var tripCost: Int {
+        return 2000
+    }
 }
