@@ -224,6 +224,13 @@ class Plane : Transport {
     }
     
     override var tripCost: Int {
-        return 2000
+        return 350
+    }
+    
+    func costPerKillometer() -> Int {
+        return tripCost / seats
     }
 }
+
+let plane = Plane()
+plane.costPerKillometer()
