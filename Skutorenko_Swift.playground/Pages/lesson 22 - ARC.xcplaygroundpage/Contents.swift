@@ -45,7 +45,7 @@ var closure : (() -> ())?
 if playground {
     // из-за скоупа видимости эти объекты удалятся
     
-    var teacher = Teacher()
+    let teacher = Teacher()
     
     /*
     if playground {
