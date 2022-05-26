@@ -106,3 +106,34 @@ for value in array {
 aCount
 bCount
 sCount
+
+
+// Homework ->
+class Human {
+    var father : String?
+    var mother : String?
+    var brothers : [String]?
+    var sisters : [String]?
+}
+
+class Me {
+    var father : Father?
+    var mother : Mother?
+    
+}
+
+class Father : Human {
+    deinit {
+        print("Father was deinit")
+    }
+}
+
+class Mother : Human {
+    deinit {
+        print("Mother was deinit")
+    }
+}
+
+let myPerson = Me()
+myPerson.father?.brothers
+myPerson.father
