@@ -25,16 +25,21 @@
                                     <action selector="showButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yCm-E8-RWH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJF-DT-lca">
-                                <rect key="frame" x="119" y="528" width="176" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hi," lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJF-DT-lca">
+                                <rect key="frame" x="126" y="126" width="160" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fJF-DT-lca" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="d3K-zX-IcQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fJF-DT-lca" secondAttribute="trailing" constant="130" id="eeY-PL-1Ev"/>
+                            <constraint firstItem="fJF-DT-lca" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="rWL-MI-VA0"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="welcomeLabel" destination="fJF-DT-lca" id="vgv-2m-ytO"/>

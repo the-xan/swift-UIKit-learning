@@ -21,11 +21,32 @@ class ViewController: UIViewController {
     // Кнопка
     let button = UIButton()
     
+    let codeLabel = UILabel()
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(codeLabel)
+        
+        codeLabel.frame = CGRect(x: 100, y: 300, width: 200, height: 150)
+        codeLabel.text = "Some Text for codelabel generated from code"
+        codeLabel.textColor = UIColor.red
+        codeLabel.numberOfLines = 0
+        
+        codeLabel.shadowColor = .blue
+        codeLabel.shadowOffset = CGSize(width: 1, height: 1)
+        
+        // layer настраивает сам лейбл
+        codeLabel.layer.cornerRadius = 45
+        codeLabel.layer.borderColor = UIColor.red.cgColor
+        codeLabel.layer.borderWidth = 2
+        
+        
+        
+        
         
         // Попытка сверстать switch кодом
         // При указаниее frame - требует от нас CGRect(местоположение)
